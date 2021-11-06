@@ -7,19 +7,29 @@ import Dashboard from "./component/dashboard/Dashboard";
 function App() {
   const [token, setToken] = useState();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
+  useEffect(() => {
+    // setToken(localStorage.getItem)
+  }, [])
 
   return (
   <div>
     <BrowserRouter>
       <Routes>
+        {!token ?
+      (<Route
+          path="/login"    
+          exact 
+          element={<Dashboard/>}
+        /> ) : (
         <Route
           path="/dashboard"    
           exact 
           element={<Dashboard/>}
-        />       
+        />      
+        ) }
       </Routes>
     </BrowserRouter>
   </div>
